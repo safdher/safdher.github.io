@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Safdher Sahai | Lead Engineer</title>
+    <meta name="description" content="Safdher Sahai, Lead Engineer in Kochi, Kerala. Cloud-hosted software on GCP, Docker and GitHub CI/CD. Open for freelance work." />
+    <meta property="og:title" content="Safdher Sahai | Lead Engineer" />
+    <meta property="og:description" content="Cloud-hosted software, shipped. Open for freelance work." />
+    <meta property="og:url" content="https://safdher.github.io/" />
+    <meta property="og:image" content="https://safdher.github.io/images/Safdher2.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="color-scheme" content="light dark" />
+    <!-- Runs before first paint so the page never flashes the wrong theme. -->
+    <script>
+      (function () {
+        var stored = null;
+        try { stored = localStorage.getItem('theme'); } catch (e) {}
+        var dark = stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.classList.toggle('dark', dark);
+        document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
