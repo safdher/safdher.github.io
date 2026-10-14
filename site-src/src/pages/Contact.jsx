@@ -10,6 +10,9 @@ const links = [
   ['cv', 'Safdher.pdf', profile.cv],
 ]
 
+const body = ['Hi Safdher,', '', 'What I want to build:', 'Platform (Android / iOS / both):', 'Target launch date:', 'Budget range:'].join('\n')
+const enquiry = `mailto:${profile.email}?subject=${encodeURIComponent('Project enquiry')}&body=${encodeURIComponent(body)}`
+
 export default function Contact() {
   return (
     <Page
@@ -18,6 +21,23 @@ export default function Contact() {
       title="Let's ship something."
       intro="Tell me what you are building and when it needs to be live. I reply within one working day."
     >
+      <div className="mb-8 flex flex-wrap items-center gap-3 font-mono text-sm">
+        <a
+          href={enquiry}
+          className="border border-accent bg-accent px-4 py-2.5 font-medium text-accent-ink hover:bg-transparent hover:text-accent"
+        >
+          ./start-a-project
+        </a>
+        <a
+          href={profile.whatsapp}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="border border-line px-4 py-2.5 hover:bg-ink hover:text-bg"
+        >
+          ./whatsapp-me
+        </a>
+        <span className="text-xs text-muted">{profile.status}. Free discovery call.</span>
+      </div>
       <dl className="border border-line font-mono text-sm">
         {links.map(([k, label, href]) => (
           <div key={k} className="border-b border-hair last:border-b-0">

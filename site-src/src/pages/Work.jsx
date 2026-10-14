@@ -9,14 +9,12 @@ const tabs = [
 
 function Row({ p }) {
   const inner = (
-    <div className="grid gap-x-5 gap-y-3 px-4 py-5 sm:grid-cols-[7rem_1fr_auto]">
-      <div className="flex h-16 w-28 items-center justify-center overflow-hidden border border-hair bg-panel font-mono text-xs text-muted">
-        {p.img ? (
+    <div className={`grid gap-x-5 gap-y-3 px-4 py-5 ${p.img ? 'sm:grid-cols-[7rem_1fr_auto]' : 'sm:grid-cols-[1fr_auto]'}`}>
+      {p.img && (
+        <div className="flex h-16 w-28 items-center justify-center overflow-hidden border border-hair bg-panel">
           <img src={p.img} alt="" loading="lazy" className={`h-full w-full object-cover ${p.link ? 'object-center' : 'object-top'}`} />
-        ) : (
-          <span aria-hidden="true">{'{ }'}</span>
-        )}
-      </div>
+        </div>
+      )}
       <div>
         <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
           <h2 className="font-mono text-base font-bold">{p.name}</h2>

@@ -39,8 +39,11 @@ export default function Hero() {
           <a href={profile.cv} download className="border border-line px-4 py-2.5 hover:bg-ink hover:text-bg">
             ./download-cv
           </a>
-          <span className="cursor-blink ml-1" aria-hidden="true" />
         </div>
+        <p className="mt-5 flex items-center gap-2 font-mono text-xs text-muted">
+          <span className="inline-block h-2 w-2 rounded-full bg-accent" aria-hidden="true" />
+          {profile.status}. Replies within one working day.
+        </p>
       </div>
 
       <div className="border-t border-line lg:border-l lg:border-t-0">
