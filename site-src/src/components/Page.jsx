@@ -1,13 +1,16 @@
-// Shared page frame: mono breadcrumb, big title, optional intro.
-export default function Page({ index, label, title, intro, children }) {
+// Shared page frame: eyebrow label, big title, optional intro.
+export default function Page({ label, title, intro, children }) {
   return (
-    <div className="px-4 py-12 sm:px-6 sm:py-16">
-      <p className="font-mono text-xs uppercase tracking-wider text-muted">
-        <span className="text-accent">{index}</span> / {label}
-      </p>
-      <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">{title}</h1>
-      {intro && <p className="mt-4 max-w-lg text-muted">{intro}</p>}
-      <div className="mt-10">{children}</div>
+    <div className="relative">
+      <div className="hero-bg pointer-events-none absolute inset-x-0 top-0 h-72" aria-hidden="true" />
+      <div className="container-x relative py-14 sm:py-20">
+        <header className="rise max-w-2xl">
+          <p className="eyebrow">{label}</p>
+          <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">{title}</h1>
+          {intro && <p className="mt-4 text-lg leading-relaxed text-muted">{intro}</p>}
+        </header>
+        <div className="mt-12">{children}</div>
+      </div>
     </div>
   )
 }

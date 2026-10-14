@@ -2,37 +2,55 @@ import Page from '../components/Page.jsx'
 import { profile } from '../data/content.js'
 
 const links = [
-  ['email', profile.email, `mailto:${profile.email}`],
-  ['whatsapp', '+91 95268 83699', profile.whatsapp],
-  ['github', 'github.com/safdher', profile.github],
-  ['linkedin', 'in/safdher-sahai', profile.linkedin],
-  ['instagram', '@safdher_sahai', profile.instagram],
-  ['cv', 'Safdher.pdf', profile.cv],
+  ['Email', profile.email, `mailto:${profile.email}`],
+  ['WhatsApp', '+91 95268 83699', profile.whatsapp],
+  ['GitHub', 'github.com/safdher', profile.github],
+  ['LinkedIn', 'in/safdher-sahai', profile.linkedin],
+  ['Instagram', '@safdher_sahai', profile.instagram],
+  ['CV', 'Download Safdher.pdf', profile.cv],
 ]
+
+const body = ['Hi Safdher,', '', 'What I want to build:', 'Platform (Android / iOS / both):', 'Target launch date:', 'Budget range:'].join('\n')
+const enquiry = `mailto:${profile.email}?subject=${encodeURIComponent('Project enquiry')}&body=${encodeURIComponent(body)}`
 
 export default function Contact() {
   return (
     <Page
-      index="05"
-      label="contact"
+      label="Contact"
       title="Let's ship something."
       intro="Tell me what you are building and when it needs to be live. I reply within one working day."
     >
-      <dl className="border border-line font-mono text-sm">
+      <div className="card relative mb-10 overflow-hidden p-6 sm:p-8">
+        <div className="hero-bg pointer-events-none absolute inset-0" aria-hidden="true" />
+        <div className="relative flex flex-wrap items-center gap-4">
+          <a href={enquiry} className="btn-primary">Start a project</a>
+          <a href={profile.whatsapp} target="_blank" rel="noopener noreferrer" className="btn-ghost">
+            WhatsApp me
+          </a>
+          <p className="flex items-center gap-2 text-sm text-muted">
+            <span className="h-2 w-2 rounded-full bg-emerald-400" aria-hidden="true" />
+            {profile.status}. Free discovery call.
+          </p>
+        </div>
+      </div>
+
+      <ul className="grid gap-4 sm:grid-cols-2">
         {links.map(([k, label, href]) => (
-          <div key={k} className="border-b border-hair last:border-b-0">
+          <li key={k}>
             <a
               href={href}
               {...(href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-              className="grid grid-cols-[6rem_1fr_auto] items-center gap-4 px-4 py-3 hover:bg-ink hover:text-bg"
+              className="card card-hover flex items-center justify-between gap-4 px-5 py-4"
             >
-              <dt className="text-muted">{k}</dt>
-              <dd className="truncate">{label}</dd>
-              <span aria-hidden="true">-&gt;</span>
+              <span className="min-w-0">
+                <span className="block text-xs font-medium uppercase tracking-wider text-muted">{k}</span>
+                <span className="block truncate font-medium">{label}</span>
+              </span>
+              <span aria-hidden="true" className="text-accent">→</span>
             </a>
-          </div>
+          </li>
         ))}
-      </dl>
+      </ul>
     </Page>
   )
 }
