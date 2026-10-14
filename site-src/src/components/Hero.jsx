@@ -12,7 +12,7 @@ const code = [
   <>&nbsp;&nbsp;role: <S>"{profile.role}"</S>,</>,
   <>&nbsp;&nbsp;base: <S>"{profile.base}"</S>,</>,
   <>&nbsp;&nbsp;years: <S>"6+"</S>,</>,
-  <>&nbsp;&nbsp;appsPublished: <S>11</S>,</>,
+  <>&nbsp;&nbsp;appsPublished: <S>13</S>,</>,
   <>&nbsp;&nbsp;status: <S>"{profile.status}"</S>,</>,
   <>{'}'};</>,
 ]

@@ -25,15 +25,51 @@ function Row({ p }) {
           </span>
         </div>
         <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted">{p.text}</p>
+        {(p.backend || p.site) && (
+          <dl className="mt-3 grid max-w-xl grid-cols-[4.5rem_1fr] gap-x-3 gap-y-1 font-mono text-xs">
+            {p.backend && (
+              <>
+                <dt className="text-muted">backend</dt>
+                <dd>{p.backend}</dd>
+              </>
+            )}
+            {p.site && (
+              <>
+                <dt className="text-muted">site</dt>
+                <dd>
+                  <a
+                    href={p.site}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                            className="text-accent hover:underline"
+                  >
+                    {p.site.replace('https://', '')}
+                  </a>
+                </dd>
+              </>
+            )}
+          </dl>
+        )}
       </div>
-      {p.link && (
-        <span className="hidden self-center font-mono text-xs text-accent sm:block" aria-hidden="true">play -&gt;</span>
-      )}
+      {p.link &&
+        (p.site ? (
+          <a
+            href={p.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${p.name} on Google Play`}
+            className="self-start font-mono text-xs text-accent hover:underline sm:self-center"
+          >
+            play -&gt;
+          </a>
+        ) : (
+          <span className="hidden self-center font-mono text-xs text-accent sm:block" aria-hidden="true">play -&gt;</span>
+        ))}
     </div>
   )
   return (
     <li className="border-b border-hair last:border-b-0 hover:bg-panel">
-      {p.link ? (
+      {p.link && !p.site ? (
         <a href={p.link} target="_blank" rel="noopener noreferrer" aria-label={`${p.name} on Google Play`} className="block">
           {inner}
         </a>

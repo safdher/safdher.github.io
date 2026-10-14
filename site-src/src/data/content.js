@@ -79,7 +79,20 @@ export const projectGroups = [
   {
     label: 'own apps / google play',
     rows: [
-      ['HoverBill', 'hoverbill', 'Tools', 'Simple offline billing app for small Indian businesses: create and share invoices from your phone.'],
+      ['HoverBill', 'hoverbill', 'Tools', 'Simple offline billing app for small Indian businesses: create and share invoices from your phone.', {
+        stack: 'Flutter',
+        site: 'https://hoverbill.hoverminds.com',
+        backend: 'PHP + MySQL billing API (JWT auth, admin panel)',
+      }],
+      ['trackEx: Expense Tracker', 'trackex', 'Finance', 'Personal expense tracker with categories, budgets and charts. Syncs to your own Google Sheet.', {
+        stack: 'Flutter',
+        site: 'https://trackex.hoverminds.com',
+        backend: 'Google Sheets API via Google Sign-In (no server of its own)',
+      }],
+      ['Photo Prompt AI', 'photopromptai', 'AI prompts', 'Prompts that turn photos into art: pick a style, copy the prompt and paste it into Gemini or ChatGPT with your photo. Available in 20+ languages.', {
+        stack: 'Android Kotlin',
+        backend: 'PHP + MySQL server, Firebase',
+      }],
       ['HoverQR', 'hoverqr', 'Tools', 'Generate, scan and share any QR code instantly.'],
       ['HoverMagic', 'hovermagic', 'AI art', 'Turn normal photos into stunning AI art with ready-to-copy prompts.'],
       ['HoverAI Prompts 4 Creatives', 'hoveraiprompts.creative', 'AI prompts', 'A library of AI prompts for creative makers.'],
@@ -90,12 +103,13 @@ export const projectGroups = [
       ['Hoverboard', 'hoverboard', 'Education', 'Free video lessons organised by category so anyone can start learning practically and quickly.'],
       ['Hoverminds', 'hovermindsapp', 'Shopping', 'Shopping app from HoverMinds.'],
       ['Sahai Multimedia', 'sahaimultimedia', 'Print on demand', 'App for Sahai Multimedia, my print-on-anything business.'],
-    ].map(([name, pkg, tag, text]) => ({
+    ].map(([name, pkg, tag, text, extra = {}]) => ({
       name,
-      tags: ['Android', tag],
-      img: `/images/apps/${pkg.replace('.', '-')}-shot.webp`,
+      tags: [extra.stack ?? 'Android', tag],
+      img: pkg === 'photopromptai' ? undefined : `/images/apps/${pkg.replace('.', '-')}-shot.webp`,
       text,
       link: `https://play.google.com/store/apps/details?id=com.hoverminds.${pkg}`,
+      ...extra,
     })),
   },
 ]

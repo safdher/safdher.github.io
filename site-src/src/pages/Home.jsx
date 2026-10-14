@@ -5,7 +5,7 @@ import { links } from '../components/Header.jsx'
 const blurb = {
   services: 'MVP builds, fractional tech lead, app rescue',
   stack: 'GCP, Docker, GitHub CI/CD, Gemini API, Postman',
-  work: 'Trensight, client apps and 11 apps on Google Play',
+  work: 'Trensight, client apps and 13 apps on Google Play',
   experience: 'Lead Engineer at Trenser, 6+ years in mobile',
   contact: 'Email, WhatsApp, LinkedIn, CV',
 }
