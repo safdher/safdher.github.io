@@ -1,17 +1,19 @@
 import { useEffect, useState } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import ThemeToggle from './ThemeToggle.jsx'
 
 export const links = [
-  ['01', 'services', '/services'],
-  ['02', 'stack', '/stack'],
-  ['03', 'work', '/work'],
-  ['04', 'experience', '/experience'],
-  ['05', 'contact', '/contact'],
+  ['services', '/services'],
+  ['stack', '/stack'],
+  ['work', '/work'],
+  ['experience', '/experience'],
+  ['contact', '/contact'],
 ]
 
-const cls = ({ isActive }) =>
-  isActive ? 'text-ink underline decoration-accent decoration-2 underline-offset-8' : 'hover:text-ink'
+const desktop = ({ isActive }) =>
+  `rounded-full px-3.5 py-1.5 text-sm font-medium capitalize transition ${
+    isActive ? 'bg-ink/[0.07] text-ink' : 'text-muted hover:text-ink'
+  }`
 
 export default function Header({ theme, onToggle }) {
   const [open, setOpen] = useState(false)
@@ -26,49 +28,63 @@ export default function Header({ theme, onToggle }) {
   }, [open])
 
   return (
-    <header className="sticky top-0 z-20 border-b border-line bg-bg">
-      <div className="mx-auto flex h-14 max-w-5xl items-center justify-between border-x border-line px-4 sm:px-6">
-        <NavLink to="/" className="font-mono text-sm font-bold tracking-tight">
-          ~/safdher<span className="text-accent">_</span>
-        </NavLink>
-        <nav aria-label="Primary" className="flex items-center gap-5">
-          <ul className="hidden gap-5 font-mono text-xs uppercase tracking-wider text-muted md:flex">
-            {links.map(([n, label, to]) => (
+    <header className="sticky top-0 z-30 border-b border-line/70 bg-bg/75 backdrop-blur-xl">
+      <div className="container-x flex h-16 items-center justify-between">
+        <Link to="/" className="flex items-center gap-2.5 font-semibold tracking-tight">
+          <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-accent to-accent2 text-sm font-bold text-accent-ink">
+            S
+          </span>
+          Safdher Sahai
+        </Link>
+
+        <nav aria-label="Primary" className="flex items-center gap-2">
+          <ul className="hidden items-center gap-1 md:flex">
+            {links.map(([label, to]) => (
               <li key={to}>
-                <NavLink to={to} className={cls}>
-                  <span className="text-accent">{n}</span> {label}
+                <NavLink to={to} className={desktop}>
+                  {label}
                 </NavLink>
               </li>
             ))}
           </ul>
           <ThemeToggle theme={theme} onToggle={onToggle} />
+          <Link to="/contact" className="btn-primary ml-1 hidden !py-2 md:inline-flex">
+            Hire me
+          </Link>
           <button
             type="button"
             aria-expanded={open}
             aria-controls="mobile-menu"
+            aria-label={open ? 'Close menu' : 'Open menu'}
             onClick={() => setOpen((o) => !o)}
-            className="border border-line px-3 py-1.5 font-mono text-xs uppercase tracking-wider hover:bg-ink hover:text-bg md:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-line bg-panel md:hidden"
           >
-            {open ? '[ close ]' : '[ menu ]'}
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
+              {open ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
+            </svg>
           </button>
         </nav>
       </div>
-      {/* phone: full-width dropdown menu */}
+
       {open && (
-        <ul id="mobile-menu" className="border-t border-line bg-bg font-mono text-sm uppercase tracking-wider md:hidden">
-          {links.map(([n, label, to]) => (
-            <li key={to} className="border-b border-hair last:border-b-0">
-              <NavLink
-                to={to}
-                className={({ isActive }) =>
-                  `flex gap-3 px-4 py-3.5 ${isActive ? 'bg-panel text-ink' : 'text-muted hover:bg-panel hover:text-ink'}`
-                }
-              >
-                <span className="text-accent">{n}</span> {label}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
+        <div id="mobile-menu" className="container-x pb-4 md:hidden">
+          <ul className="card overflow-hidden p-1.5">
+            {links.map(([label, to]) => (
+              <li key={to}>
+                <NavLink
+                  to={to}
+                  className={({ isActive }) =>
+                    `block rounded-xl px-4 py-3 text-base font-medium capitalize ${
+                      isActive ? 'bg-ink/[0.07] text-ink' : 'text-muted'
+                    }`
+                  }
+                >
+                  {label}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
     </header>
   )

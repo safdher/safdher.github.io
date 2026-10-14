@@ -16,6 +16,9 @@ export const profile = {
   multimedia: 'https://www.sahaimultimedia.com/',
 }
 
+// Career started Jan 2019; computed so the number never goes stale.
+export const yearsExperience = new Date().getFullYear() - 2019
+
 export const services = [
   {
     title: 'Build your MVP',
@@ -107,6 +110,7 @@ export const projectGroups = [
       name,
       tags: [extra.stack ?? 'Android', tag],
       img: pkg === 'photopromptai' ? undefined : `/images/apps/${pkg.replace('.', '-')}-shot.webp`,
+      icon: pkg === 'photopromptai' ? undefined : `/images/apps/${pkg.replace('.', '-')}-icon.webp`,
       text,
       link: `https://play.google.com/store/apps/details?id=com.hoverminds.${pkg}`,
       ...extra,
@@ -127,3 +131,6 @@ export const education = [
   ['2016 - 2019', 'MCA', 'University of Calicut'],
   ['2013 - 2016', 'B.Sc. Computer Science', 'Mahatma Gandhi University'],
 ]
+
+export const apps = projectGroups[2].rows
+export const clientProjects = [...projectGroups[0].rows, ...projectGroups[1].rows]

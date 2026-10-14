@@ -3,34 +3,35 @@ import { experience, education } from '../data/content.js'
 
 export default function Experience() {
   return (
-    <Page index="04" label="experience" title="Where I've worked." intro="Currently on Android with Jetpack Compose alongside Flutter.">
-      <div className="border border-line">
-        <ul>
-          {experience.map(([when, role, org, text]) => (
-            <li key={when + role} className="grid gap-x-6 gap-y-1 border-b border-hair px-4 py-5 last:border-b-0 hover:bg-panel md:grid-cols-[11rem_1fr]">
-              <span className="font-mono text-xs text-muted md:pt-1">{when}</span>
-              <div>
-                <h2 className="font-semibold">
-                  {role} <span className="font-mono text-sm font-normal text-accent">@ {org}</span>
-                </h2>
-                <p className="mt-1 max-w-xl text-sm leading-relaxed text-muted">{text}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="mt-6 border border-line font-mono text-sm">
-        <div className="border-b border-line bg-panel px-4 py-2 text-xs uppercase tracking-wider text-muted">education</div>
-        {education.map(([when, deg, school]) => (
-          <div key={deg} className="grid gap-x-6 border-b border-hair px-4 py-3 last:border-b-0 md:grid-cols-[11rem_1fr]">
-            <span className="text-xs text-muted md:pt-0.5">{when}</span>
-            <span>
-              {deg} <span className="text-muted">/ {school}</span>
-            </span>
-          </div>
+    <Page label="Experience" title="Where I've worked." intro="Currently on Android with Jetpack Compose alongside Flutter.">
+      <ol className="relative ml-2 border-l border-line">
+        {experience.map(([when, role, org, text], i) => (
+          <li key={when + role} className="relative pb-10 pl-8 last:pb-0">
+            <span
+              aria-hidden="true"
+              className={`absolute -left-[7px] top-1.5 h-3.5 w-3.5 rounded-full border-2 border-bg ${
+                i === 0 ? 'bg-gradient-to-br from-accent to-accent2' : 'bg-line'
+              }`}
+            />
+            <p className="font-mono text-xs text-muted">{when}</p>
+            <h2 className="mt-1 text-lg font-semibold">
+              {role} <span className="font-normal text-accent">@ {org}</span>
+            </h2>
+            <p className="mt-1.5 max-w-2xl text-sm leading-relaxed text-muted">{text}</p>
+          </li>
         ))}
-      </div>
+      </ol>
+
+      <h2 className="mt-20 text-2xl font-semibold tracking-tight">Education</h2>
+      <ul className="mt-8 grid gap-5 sm:grid-cols-2">
+        {education.map(([when, deg, school]) => (
+          <li key={deg} className="card p-6">
+            <p className="font-mono text-xs text-muted">{when}</p>
+            <h3 className="mt-1 font-semibold">{deg}</h3>
+            <p className="text-sm text-muted">{school}</p>
+          </li>
+        ))}
+      </ul>
     </Page>
   )
 }

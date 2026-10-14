@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import Header from './Header.jsx'
 import Footer from './Footer.jsx'
-import StatusBar from './StatusBar.jsx'
 import { useTheme } from '../hooks/useTheme.js'
 
 const titles = {
@@ -24,13 +23,12 @@ export default function Layout() {
   }, [pathname])
 
   return (
-    <div className="flex min-h-screen flex-col pb-0 sm:pb-6">
+    <div className="flex min-h-screen flex-col">
       <Header theme={theme} onToggle={toggle} />
-      <main className="mx-auto w-full max-w-5xl flex-1 border-x border-line">
+      <main className="flex-1">
         <Outlet />
       </main>
       <Footer />
-      <StatusBar theme={theme} />
     </div>
   )
 }
