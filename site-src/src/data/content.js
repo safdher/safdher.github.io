@@ -104,7 +104,7 @@ export const projectGroups = [
       ['HoverAI Prompt 4 Professionals', 'hoveraiprompts.professional', 'AI prompts', 'A library of AI prompts for working professionals.'],
       ['Hovertots', 'hovertots', 'Kids learning', 'A joyful ABC learning adventure for toddlers with sounds, images and animation.'],
       ['Hoverboard', 'hoverboard', 'Education', 'Free video lessons organised by category so anyone can start learning practically and quickly.'],
-      ['Hoverminds', 'hovermindsapp', 'Shopping', 'Shopping app from HoverMinds.'],
+      ['Shopping App', 'hovermindsapp', 'Shopping', 'Shopping app for Android, available on Google Play.'],
       ['Sahai Multimedia', 'sahaimultimedia', 'Print on demand', 'App for Sahai Multimedia, my print-on-anything business.'],
     ].map(([name, pkg, tag, text, extra = {}]) => ({
       name,
