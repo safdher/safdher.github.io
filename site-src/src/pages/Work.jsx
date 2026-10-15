@@ -16,7 +16,7 @@ export default function Work() {
     <Page
       label="Work"
       title="What I've built."
-      intro="Apps I publish under HoverMinds, and products I built for clients. Each app lists its stack and backend."
+      intro="Apps I have published on Google Play, and products I built for clients. Each app lists its stack and backend."
     >
       <div
         role="tablist"
@@ -52,7 +52,7 @@ export default function Work() {
 
       <p className="mt-10 flex flex-wrap gap-x-6 gap-y-2 text-sm">
         <a href={profile.playStore} className="font-medium text-accent hover:underline" target="_blank" rel="noopener noreferrer">
-          All HoverMinds apps on Google Play →
+          All my apps on Google Play →
         </a>
         <a href={profile.multimedia} className="text-muted hover:text-ink" target="_blank" rel="noopener noreferrer">
           sahaimultimedia.com →
